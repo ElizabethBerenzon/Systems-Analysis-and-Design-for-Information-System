@@ -31,13 +31,16 @@ For the Client:
     * Reports
     * Status tracking
     * PaymentsGeneral Overview of the Process
-The system supports a full service management process:  
+      
+The system supports a full service management process:
+-- 
 * Service Ordering: Placed by the customer.  
 * Consultant Assignment: Performed by a manager.  
 * Execution: Performing the service and updating the status.  
 * Reporting: Generating a professional report.  
 * Personal Area: Viewing the report in a private portal.  
-* Payment: Paying for the service.  
+* Payment: Paying for the service.
+  
 Core Mechanisms and Components
 --
 The functional components of the system include:  
