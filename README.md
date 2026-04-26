@@ -112,6 +112,12 @@ Use Case Structure
 
 The system includes business-focused Use Cases only, where each action represents an interaction between a user (Actor) and the system.
 
+Key Difference between Primary Actor and Supporting Actor:
+--
+
+* Primary Actor -> starts the action and drives the process.
+* Supporting Actor -> supports the process but does not initiate it.
+
 User & Access Management
 --
 
