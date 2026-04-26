@@ -261,8 +261,133 @@ Business Analysis & System Design Project
 * Process Thinking
 
 The next Step is to create Use Case Diagram, using AI tools to create the correct code on PlantUML.
+```
+@startuml
+left to right direction
+skinparam packageStyle rectangle
 
+' ===== Primary Actors (LEFT) =====
+actor Client
+actor "Customer Service Representative" as CSR
+actor "Cybersecurity Consultant" as Consultant
+actor "Consultant Team Manager" as Manager
+actor "Finance Manager" as Finance
+actor "System Administrator" as Admin
+actor "Company Executive" as Executive
+
+' ===== Supporting Actors (RIGHT) =====
+actor "Payment System" as Payment
+actor "Notification System" as Notification
+actor "Report System" as ReportSystem
+
+' ===== General Actor =====
+actor User
+User <|-- Client
+User <|-- Consultant
+User <|-- Manager
+User <|-- Finance
+
+' ===== System =====
+rectangle CyberService {
+
+  ' Authentication
+  usecase "Register Client" as UC1
+  usecase "Login" as UC2
+  usecase "Recover Password" as UC3
+
+  ' Services
+  usecase "Browse Services" as UC4
+  usecase "Select Service" as UC5
+  usecase "Manage Services" as UC6
+
+  ' Orders
+  usecase "Place Order" as UC7
+  usecase "Cancel Order" as UC8
+  usecase "Track Status" as UC9
+
+  ' Task Management
+  usecase "Assign Consultant" as UC10
+  usecase "Update Progress" as UC11
+  usecase "Complete Task" as UC12
+
+  ' Reports
+  usecase "Generate Report" as UC13
+  usecase "Review Report" as UC14
+  usecase "Publish Report" as UC15
+  usecase "Download Report" as UC16
+
+  ' Payments
+  usecase "Process Payment" as UC17
+  usecase "Calculate Fees" as UC18
+  usecase "Issue Receipt" as UC19
+  usecase "Refund Payment" as UC20
+
+  ' Analytics
+  usecase "View Business Reports" as UC21
+  usecase "Analyze Workload" as UC22
+}
+
+' ===== Connections (Primary Actors → System) =====
+
+Client --> UC4
+Client --> UC5
+Client --> UC7
+Client --> UC8
+Client --> UC9
+Client --> UC16
+Client --> UC17
+
+Consultant --> UC11
+Consultant --> UC12
+Consultant --> UC13
+
+Manager --> UC10
+Manager --> UC14
+Manager --> UC22
+
+Finance --> UC18
+Finance --> UC20
+
+Executive --> UC21
+
+Admin --> UC1
+Admin --> UC6
+
+' ===== Supporting Actors (RIGHT SIDE CONNECTIONS) =====
+
+UC17 --> Payment
+UC19 --> Payment
+UC20 --> Payment
+
+UC15 --> Notification
+UC8 --> Notification
+
+UC13 --> ReportSystem
+
+' ===== INCLUDE =====
+UC7 --> UC5 : <<include>>
+UC17 --> UC18 : <<include>>
+UC17 --> UC19 : <<include>>
+UC13 --> UC11 : <<include>>
+
+' ===== EXTEND =====
+UC8 ..> UC7 : <<extend>>
+UC20 ..> UC17 : <<extend>>
+UC3 ..> UC2 : <<extend>>
+
+' ===== GENERALIZATION =====
+usecase "Manage Orders" as UCO
+UCO <|-- UC7
+UCO <|-- UC8
+
+usecase "Manage Payments" as UCP
+UCP <|-- UC17
+UCP <|-- UC20
+
+@enduml
+```
 On the diagram the primary actors should be located on the left side and external support systems on the right side.
+
 
 Use Case Relationships
 --
